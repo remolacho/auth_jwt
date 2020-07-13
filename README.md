@@ -1,8 +1,6 @@
 # AuthJwt
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/auth_jwt`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem allows you to make identifications for your microservices and create the Jwt if you wish so
 
 ## Installation
 
@@ -22,14 +20,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+  Once installed run the following commands:
+  
+   1- It will create a file in the initializer so you can configure the parameters
 
-## Development
+     rails g auth_jwt:install
+   
+   2- Create a helper in the spec support to handle authentication tests
+     
+     rails g auth_jwt:test_helper
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+   3- In your main controller or base you must add the module
+   
+     include AuthJwt
+     
+     Example
+     class ApiController < ActionController::API
+       include AuthJwt
+     end
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
+   4- You can use two methods for accessing your API
+   
+     before_action :authorized_app
+     before_action :authorized_user
+    
+     Example
+     class ApiController < ActionController::API
+       include AuthJwt
+       
+       before_action :authorized_app # Authenticate the client app
+       before_action :authorized_user # Identify the user based on the jwt for login
+     end
+    
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/auth_jwt.
