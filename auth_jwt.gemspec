@@ -1,13 +1,13 @@
 require_relative 'lib/auth_jwt/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "auth_jwt"
+  spec.name          = "auth_jwt_go"
   spec.version       = AuthJwt::VERSION
   spec.authors       = ["jonathan rojas"]
   spec.email         = ["jonathangrh.25@gmail.com"]
 
-  spec.summary       = %q{Auth API with Jwt}
-  spec.description   = %q{this authenticates your api with jwt}
+  spec.summary       = %q{Auth API with Jwt include current_user helper}
+  spec.description   = %q{this authenticates your api with jwt include current_user helper}
   spec.homepage      = 'https://github.com/remolacho/auth_jwt'
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
